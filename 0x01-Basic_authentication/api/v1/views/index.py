@@ -5,6 +5,7 @@ from flask import jsonify, abort
 from api.v1.views import app_views
 from models.user import User
 
+
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
 def status() -> str:
     """ GET /api/v1/status
@@ -12,7 +13,6 @@ def status() -> str:
       - the stats of the API
     """
     return jsonify({"status": "OK"})
-
 
 @app_views.route('/stats/', strict_slashes=False)
 def stats() -> str:
@@ -24,19 +24,20 @@ def stats() -> str:
     return jsonify(stats)
 
 
+# unauthorised entry status
 @app_views.route('/unauthorized/', strict_slashes=False)
 def unauthorized() -> None:
     """GET /api/v1/unauthorized
     Return:
       - Unauthorized error.
     """
-    abort(401)
+    abort(401, description='Unauthorised')
 
-
+# blocked forbidden
 @app_views.route('/forbidden/', strict_slashes=False)
 def forbidden() -> None:
     """GET /api/v1/forbidden
     Return:
       - Forbidden error.
     """
-    abort(403)
+    abort(403, description='Forbidden')
