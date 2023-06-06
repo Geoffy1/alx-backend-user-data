@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-"""Basic authentcn mod for API.
+"""Basic authentication mod for API.
 """
+
+
 import re
 import base64
 import binascii
@@ -15,8 +17,11 @@ class BasicAuth(Auth):
     """
     @staticmethod
     def extract_base64_authorization_header(authorization_header: str) -> str:
-        """Extract Base64 part of the Authorization header
-        for a Basic Authentication.
+        """_summary_
+        Arg:
+                 authorization_header (str): _description_
+        Return:
+                 str: _description_
         """
         if isinstance(authorization_header, str):
             match = re.match(r'Basic\s+(.+)', authorization_header.strip())
@@ -26,7 +31,11 @@ class BasicAuth(Auth):
 
     @staticmethod
     def decode_base64_authorization_header(base64_authorization_header: str) -> str:
-        """Decodes a base64-encoded authorization header.
+        """_summary_
+        Args:
+                 base64_authorization_header (str): _description_
+        Returns:
+                  str: _description_
         """
         if isinstance(base64_authorization_header, str):
             try:
@@ -38,8 +47,10 @@ class BasicAuth(Auth):
 
     @staticmethod
     def extract_user_credentials(decoded_base64_authorization_header: str) -> Tuple[str, str]:
-        """Extract user credentials from a base64-decoded authorization
-        header that uses the Basic authntcn flow.
+        """_summary_
+        Args:
+                                        self (_type_): _description_
+                                        str (_type_): _description_
         """
         if isinstance(decoded_base64_authorization_header, str):
             match = re.match(r'([^:]+):(.+)', decoded_base64_authorization_header.strip())
@@ -49,7 +60,9 @@ class BasicAuth(Auth):
 
     @staticmethod
     def user_object_from_credentials(user_email: str, user_pwd: str) -> TypeVar('User'):
-        """Retrieve user based on the user's authentication credentials.
+        """_summary_
+        Args:
+                        self (_type_): _description_
         """
         if isinstance(user_email, str) and isinstance(user_pwd, str):
             try:
@@ -61,7 +74,7 @@ class BasicAuth(Auth):
         return None
 
     def current_user(self, request=None) -> TypeVar('User'):
-        """Retrieve user from a request.
+        """_Retrieve user from a request_
         """
         auth_header = self.authorization_header(request)
         b64_auth_token = self.extract_base64_authorization_header(auth_header)
