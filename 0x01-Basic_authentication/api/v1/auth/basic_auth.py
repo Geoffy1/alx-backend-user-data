@@ -15,7 +15,7 @@ from models.user import User
 class BasicAuth(Auth):
     """Basic authentcn cls.
     """
-    @staticmethod
+    
     def extract_base64_authorization_header(authorization_header: str) -> str:
         """_summary_
         Arg:
@@ -29,7 +29,6 @@ class BasicAuth(Auth):
                 return match.group(1)
         return None
 
-    @staticmethod
     def decode_base64_authorization_header(base64_authorization_header: str) -> str:
         """_summary_
         Args:
@@ -45,7 +44,6 @@ class BasicAuth(Auth):
                 pass
         return None
 
-    @staticmethod
     def extract_user_credentials(decoded_base64_authorization_header: str) -> Tuple[str, str]:
         """_summary_
         Args:
@@ -58,7 +56,6 @@ class BasicAuth(Auth):
                 return match.group(1), match.group(2)
         return None, None
 
-    @staticmethod
     def user_object_from_credentials(user_email: str, user_pwd: str) -> TypeVar('User'):
         """_summary_
         Args:
