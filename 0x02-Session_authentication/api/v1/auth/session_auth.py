@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Module authentication uses Session auth
+Module for authentication using Session auth
 """
 
 
@@ -17,9 +17,9 @@ class SessionAuth(Auth):
 
     def create_session(self, user_id: str = None) -> str:
         """_summary_
-        Arg:
+        Args:
             user_id (str, optional): _description_. Defaults to None.
-        Return:
+        Returns:
             str: _description_
         """
         if user_id is None or not isinstance(user_id, str):
@@ -31,9 +31,9 @@ class SessionAuth(Auth):
 
     def user_id_for_session_id(self, session_id: str = None) -> str:
         """_summary_
-        Arg:
+        Args:
             session_id (str, optional): _description_. Defaults to None.
-        Return:
+        Returns:
                 str: _description_
         """
         if session_id is None or not isinstance(session_id, str):
@@ -52,7 +52,7 @@ class SessionAuth(Auth):
 
     def destroy_session(self, request=None):
         """_summary_
-        Arg:
+        Args:
             request (_type_, optional): _description_. Defaults to None.
         Returns:
             _type_: _description_
