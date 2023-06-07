@@ -93,7 +93,7 @@ class BasicAuth(Auth):
             return None
 
     def current_user(self, request=None) -> TypeVar('User'):
-        """_summary_
+        """_Retrieves_
         """
         auth_header = self.authorization_header(request)
         if auth_header is not None:
