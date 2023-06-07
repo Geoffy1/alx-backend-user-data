@@ -17,9 +17,9 @@ class SessionAuth(Auth):
 
     def create_session(self, user_id: str = None) -> str:
         """_summary_
-        Args:
+        Argum:
             user_id (str, optional): _description_. Defaults to None.
-        Returns:
+        Return:
             str: _description_
         """
         if user_id is None or not isinstance(user_id, str):
@@ -31,9 +31,9 @@ class SessionAuth(Auth):
 
     def user_id_for_session_id(self, session_id: str = None) -> str:
         """_summary_
-        Args:
+        Argum:
             session_id (str, optional): _description_. Defaults to None.
-        Returns:
+        Return:
                 str: _description_
         """
         if session_id is None or not isinstance(session_id, str):
@@ -42,7 +42,7 @@ class SessionAuth(Auth):
 
     def current_user(self, request=None):
         """_summary_
-        Args:
+        Argum:
             request (_type_, optional): _description_. Defaults to None.
         """
         session_cookie = self.session_cookie(request)
@@ -52,9 +52,9 @@ class SessionAuth(Auth):
 
     def destroy_session(self, request=None):
         """_summary_
-        Args:
+        Argum:
             request (_type_, optional): _description_. Defaults to None.
-        Returns:
+        Return:
             _type_: _description_
         """
         if request is None:
